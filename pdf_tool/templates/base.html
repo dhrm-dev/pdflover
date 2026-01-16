@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love PDF Tools - Your Romantic PDF Solution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f3c9f5 0%, #ffc3a0 100%);
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+        }
+
+        /* Romantic Background Patterns */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(900px circle at 20% 20%, #ede9fe, transparent 40%),
+                radial-gradient(900px circle at 80% 30%, #dbeafe, transparent 40%),
+                linear-gradient(180deg,#ffffff,#f9fafb);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 248, 0.98) 100%);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 30px rgba(255, 105, 180, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #ff6b9d;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #857be4;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-shadow: 0 2px 4px rgba(255, 107, 157, 0.3);
+        }
+        .logo img {
+    height: 60px;      /* yahin se size control hota hai */
+    width: auto;
+}
+        
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 0.7rem 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #a61ebe;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #da2ae0ec, #ff8fab);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Dropdown Styles with Love Theme */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffeef2 100%);
+            min-width: 280px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 2px solid #22090e;
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-section {
+            padding: 1rem 0;
+            border-bottom: 2px solid #857d7e;
+            position: relative;
+        }
+
+        .dropdown-section:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-section::before {
+            content: '❤';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 0.8rem;
+            color: #867e81;
+            background: #ffeef2;
+            padding: 0 5px;
+        }
+
+        .dropdown-title {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1d010b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #ffcad4, #ffb7c5);
+            margin: 0 -1rem;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            color: #982dc2;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            position: relative;
+        }
+
+        .dropdown-link:hover {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            color: white;
+            border-left-color: #ffcad4;
+            transform: translateX(5px);
+        }
+
+        .dropdown-link:hover .dropdown-icon {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .dropdown-icon {
+            width: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #50b1c2;
+            transition: all 0.3s ease;
+        }
+        
+        /* All Tools Dropdown - Love Theme */
+        .all-tools-dropdown {
+            min-width: 800px !important;
+            width: auto !important;
+            left: auto !important;
+            right: 0 !important;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffeef2 100%);
+        }
+        
+        .all-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            padding: 1rem;
+        }
+        
+        .all-tools-column {
+            padding: 0 0.5rem;
+        }
+        
+        .all-tools-column .dropdown-title {
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffcad4, #ffb7c5);
+            border-radius: 10px;
+        }
+        
+        .all-tools-column .dropdown-link {
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+            border-left: none;
+            border-radius: 10px;
+            margin-bottom: 0.25rem;
+        }
+        
+        .all-tools-column .dropdown-link:hover {
+            background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+            border-left: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '❤';
+            position: absolute;
+            font-size: 10rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #cf0000, #bab8c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 8px rgba(255, 107, 157, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 0.3rem;
+            color: #c40101;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.856);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tool-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+            padding: 1.2rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 2px solid #ffcad4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #c67fe2, #ff8fab);
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(255, 107, 157, 0.4);
+        }
+        
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 0.1rem;
+            color: #ff6b9d;
+            text-shadow: none;
+        }
+        
+        .tool-card h3 {
+            color: #d63384;
+            margin-bottom: 0.3rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+        }
+        
+        .tool-card p {
+            color: #c44569;
+            font-size: 12px;
+            line-height: 1.35;
+        }
+        
+        .upload-area {
+            border: 3px dashed #e60101;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #fff5f7, #ffeef2);
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .upload-area:hover {
+            border-color: #7c7575;
+            background: linear-gradient(135deg, #ffeef2, #ffdde5);
+            transform: scale(1.02);
+        }
+        
+        .upload-area.dragover {
+            border-color: #dd2315;
+            background: linear-gradient(135deg, #ffdde5, #ffcad4);
+            box-shadow: 0 0 30px rgba(255, 107, 157, 0.3);
+        }
+        
+        .file-input-hidden {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #19198b, #e9c8d0);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(8, 8, 8, 0.815);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.6);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #ffb7c5, #ffcad4);
+            color: #d63384;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #ffcad4, #ffdde5);
+        }
+        
+        .feature-section {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f7 100%);
+            border-radius: 25px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.2);
+            border: 2px solid #ffcad4;
+        }
+        
+        /* Footer with Love Theme */
+        .footer {
+            background: #010000;     
+            color:#ffffff;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #ffcad4;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: #ffcad4;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ffdde5;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.2rem 0;
+        }
+        
+        .footer-links a:hover {
+            color: #ffcad4;
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 1.5rem 2rem 0;
+            border-top: 2px solid rgba(255, 202, 212, 0.3);
+            text-align: center;
+            color: #ffdde5;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        
+        .footer-social a {
+            color: #ffdde5;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .footer-social a:hover {
+            color: #d63384;
+            background: #ffcad4;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dropdown {
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px);
+                width: 90vw;
+                max-width: 400px;
+            }
+            
+            .all-tools-dropdown {
+                min-width: 90vw !important;
+                max-width: 90vw !important;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            
+            .all-tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+    
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="logo">
+    <img src="/static/images/logo.jpeg" alt="PDFConvert Logo">
+</a>
+            
+            <ul class="nav-links">
+                <!-- Home Link -->
+                <li class="nav-item">
+                    <a href="{% url 'home' %}" class="nav-btn">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+
+                <!-- Merge PDF Dropdown -->
+                <li class="nav-item">
+                    <button class="nav-btn">
+                        <i class="fas fa-object-group"></i>
+                        Merge PDF
+                    </button>
+                    <div class="dropdown">
+                        <a href="{% url 'merge_pdf' %}" class="dropdown-link">
+                            <div class="dropdown-icon">
+                                <i class="fas fa-object-group"></i>
+                            </div>
+                            <div>
+                                <strong>Merge PDF</strong>
+                                <div style="font-size: 0.9rem; color: #c44569;">Combine multiple PDFs into one</div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Split PDF Dropdown -->
+                <li class="nav-item">
+                    <button class="nav-btn">
+                        <i class="fas fa-cut"></i>
+                        Split PDF
+                    </button>
+                    <div class="dropdown">
+                        <a href="{% url 'split_pdf' %}" class="dropdown-link">
+                            <div class="dropdown-icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <div>
+                                <strong>Split PDF</strong>
+                                <div style="font-size: 0.9rem; color: #c44569;">Extract pages from PDF</div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Compress PDF Dropdown -->
+                <li class="nav-item">
+                    <button class="nav-btn">
+                        <i class="fas fa-compress-alt"></i>
+                        Compress PDF
+                    </button>
+                    <div class="dropdown">
+                        <a href="{% url 'compress_pdf' %}" class="dropdown-link">
+                            <div class="dropdown-icon">
+                                <i class="fas fa-compress-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Compress PDF</strong>
+                                <div style="font-size: 0.9rem; color: #c44569;">Reduce PDF file size</div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Convert PDF Dropdown -->
+                <li class="nav-item">
+                    <button class="nav-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        Convert PDF
+                    </button>
+                    <div class="dropdown">
+                        <div class="dropdown-section">
+                            <div class="dropdown-title">PDF to Other Formats</div>
+                            <a href="{% url 'pdf_to_word' %}" class="dropdown-link">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-file-word"></i>
+                                </div>
+                                <div>
+                                    <strong>PDF to Word</strong>
+                                    <div style="font-size: 0.9rem; color: #c44569;">Convert PDF to DOCX</div>
+                                </div>
+                            </a>
+                            <a href="{% url 'pdf_to_excel' %}" class="dropdown-link">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-file-excel"></i>
+                                </div>
+                                <div>
+                                    <strong>PDF to Excel</strong>
+                                    <div style="font-size: 0.9rem; color: #c44569;">Convert PDF to XLSX</div>
+                                </div>
+                            </a>
+                            <a href="{% url 'pdf_to_ppt' %}" class="dropdown-link">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-file-powerpoint"></i>
+                                </div>
+                                <div>
+                                    <strong>PDF to PowerPoint</strong>
+                                    <div style="font-size: 0.9rem; color: #c44569;">Convert PDF to PPTX</div>
+                                </div>
+                            </a>
+                            <a href="{% url 'pdf_to_images' %}" class="dropdown-link">
+                                <div class="dropdown-icon">
+                                    <i class="fas fa-file-image"></i>
+                                </div>
+                                <div>
+                                    <strong>PDF to JPG</strong>
+                                    <div style="font-size: 0.9rem; color: #c44569;">Convert PDF to images</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- All Tools Dropdown -->
+                <li class="nav-item">
+                    <button class="nav-btn">
+                        <i class="fas fa-tools"></i>
+                        All Tools
+                    </button>
+                    <div class="dropdown all-tools-dropdown">
+                        <div class="all-tools-grid">
+                            <!-- Column 1: Edit PDF -->
+                            <div class="all-tools-column">
+                                <div class="dropdown-title">Edit PDF</div>
+                                <a href="{% url 'edit_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div>Edit PDF</div>
+                                </a>
+                                <a href="{% url 'rotate_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-redo"></i>
+                                    </div>
+                                    <div>Rotate PDF</div>
+                                </a>
+                                <a href="{% url 'rearrange_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-sort"></i>
+                                    </div>
+                                    <div>Rearrange PDF</div>
+                                </a>
+                            </div>
+
+                            <!-- Column 2: Security -->
+                            <div class="all-tools-column">
+                                <div class="dropdown-title">Security</div>
+                                <a href="{% url 'protect_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div>Protect PDF</div>
+                                </a>
+                                <a href="{% url 'unlock_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-unlock"></i>
+                                    </div>
+                                    <div>Unlock PDF</div>
+                                </a>
+                            </div>
+
+                            <!-- Column 3: Watermark -->
+                            <div class="all-tools-column">
+                                <div class="dropdown-title">Watermark</div>
+                                <a href="{% url 'add_watermark' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-tint"></i>
+                                    </div>
+                                    <div>Add Watermark</div>
+                                </a>
+                                <a href="{% url 'remove_watermark' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-eraser"></i>
+                                    </div>
+                                    <div>Remove Watermark</div>
+                                </a>
+                            </div>
+
+                            <!-- Column 4: Other Tools -->
+                            <div class="all-tools-column">
+                                <div class="dropdown-title">Other Tools</div>
+                                <a href="{% url 'image_to_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div>Image to PDF</div>
+                                </a>
+                                <a href="{% url 'html_to_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div>HTML to PDF</div>
+                                </a>
+                                <a href="{% url 'ocr_pdf' %}" class="dropdown-link">
+                                    <div class="dropdown-icon">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <div>OCR PDF</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>PDFLOVER</h3>
+                <p style="color: #ffdde5; line-height: 1.6; margin-bottom: 1.5rem;">
+                    Your all-in-one romantic solution for PDF editing, conversion, and manipulation. 
+                    Free online tools to handle all your PDF needs with love and care.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Tools</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'merge_pdf' %}">Merge PDF</a></li>
+                    <li><a href="{% url 'split_pdf' %}">Split PDF</a></li>
+                    <li><a href="{% url 'compress_pdf' %}">Compress PDF</a></li>
+                    <!-- <li><a href="{% url 'pdf_to_word' %}">PDF to Word</a></li>
+                    <li><a href="{% url 'pdf_to_excel' %}">PDF to Excel</a></li> -->
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'careers' %}">Careers</a></li>
+                    <!-- <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'affiliate' %}">Affiliate Program</a></li> -->
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'terms_of_service' %}">Terms of Service</a></li>
+                    <li><a href="{% url 'disclaimer' %}">Disclaimer</a></li>
+                    <li><a href="{% url 'cookie_policy' %}">Cookie Policy</a></li>
+                    <!-- <li><a href="{% url 'gdpr' %}">GDPR Compliance</a></li> -->
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 PDFLOVER. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Floating Hearts Animation
+        document.addEventListener('DOM  ContentLoaded', function() {
+            const floatingHearts = document.getElementById('floatingHearts');
+            const heartsCount = 15;
+            
+            for (let i = 0; i < heartsCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                floatingHearts.appendChild(heart);
+            }
+
+            // Drag and drop functionality
+            const uploadAreas = document.querySelectorAll('.upload-area');
+            
+            uploadAreas.forEach(area => {
+                const fileInput = area.querySelector('input[type="file"]');
+                
+                area.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    area.classList.add('dragover');
+                });
+                
+                area.addEventListener('dragleave', () => {
+                    area.classList.remove('dragover');
+                });
+                
+                area.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    area.classList.remove('dragover');
+                    fileInput.files = e.dataTransfer.files;
+                    
+                    if (fileInput.files.length > 0) {
+                        const fileName = fileInput.files[0].name;
+                        const fileSize = (fileInput.files[0].size / (1024 * 1024)).toFixed(2);
+                        area.querySelector('p').innerHTML = 
+                            `✅ Selected: ${fileName}<br><small>Size: ${fileSize} MB</small>`;
+                    }
+                });
+                
+                fileInput.addEventListener('change', () => {
+                    if (fileInput.files.length > 0) {
+                        const fileName = fileInput.files[0].name;
+                        const fileSize = (fileInput.files[0].size / (1024 * 1024)).toFixed(2);
+                        area.querySelector('p').innerHTML = 
+                            `✅ Selected: ${fileName}<br><small>Size: ${fileSize} MB</small>`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

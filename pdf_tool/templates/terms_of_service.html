@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %}Terms of Service - LovePDFtools{% endblock %}
+
+{% block content %}
+<div class="career-page">
+
+    <div class="career-form">
+        <h2 class="mb-2">Terms of Service</h2>
+        <p class="privacy-date">Last updated: {% now "F j, Y" %}</p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">1. Acceptance of Terms</h4>
+        <p class="about-text">
+            By accessing and using PDFLOVER, you agree to be bound by these Terms of
+            Service. If you do not agree, please discontinue use of the service.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">2. Description of Service</h4>
+        <p class="about-text">
+            PDFLOVER provides online PDF editing, conversion, and manipulation tools
+            free of charge for both personal and commercial use.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">3. User Responsibilities</h4>
+        <ul class="about-list">
+            <li>Do not upload illegal, copyrighted, or malicious content</li>
+            <li>Do not use the service for spamming or abuse</li>
+            <li>Do not attempt to disrupt or overload our servers</li>
+            <li>Do not reverse engineer or copy our technology</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">4. File Processing</h4>
+        <ul class="about-list">
+            <li>Files are processed automatically without human intervention</li>
+            <li>All uploaded files are deleted within 1 hour</li>
+            <li>Always keep backups of your files</li>
+            <li>Maximum file size limit: 100MB per file</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">5. Disclaimer</h4>
+        <ul class="about-list">
+            <li>The service is provided “as is” without warranties of any kind</li>
+            <li>We do not guarantee uptime, speed, or compatibility</li>
+            <li>We are not responsible for data loss or corruption</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">6. Limitation of Liability</h4>
+        <p class="about-text">
+            PDFLOVER shall not be liable for any indirect, incidental, or
+            consequential damages arising from the use of our services.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">7. Changes to Terms</h4>
+        <p class="about-text">
+            We reserve the right to update or modify these Terms of Service at any time.
+            Continued use of the service constitutes acceptance of changes.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">8. Contact</h4>
+        <p class="about-text">
+            For questions related to these terms, please contact us at:
+        </p>
+        <p class="about-text"><strong>Email:</strong> legal@pdflover.com</p>
+    </div>
+
+</div>
+
+<style>
+/* Page center */
+.career-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main card */
+.career-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Main heading */
+.career-form h2 {
+    font-weight: 700;
+    color: #E74C3C;
+}
+
+/* Section headings */
+.about-heading {
+    margin-top: 18px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Paragraph text */
+.about-text {
+    font-size: 14.5px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Date text */
+.privacy-date {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Divider */
+.about-divider {
+    margin: 22px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Lists */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.about-list li {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 6px;
+}
+</style>
+
+{% endblock %}

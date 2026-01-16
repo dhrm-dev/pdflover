@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="feature-section">
+        <h1>PDF Information</h1>
+        <p>View detailed information about your PDF documents.</p>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="upload-area">
+                <h3>📄 Upload PDF File</h3>
+                <p>Click or drag & drop your PDF file here</p>
+                <input type="file" name="pdf_file" accept=".pdf" required class="file-input">
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <button type="submit" class="btn">Get PDF Info</button>
+            </div>
+        </form>
+
+        {% if pdf_info %}
+        <div style="background: #e7f3ff; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; border-left: 4px solid #007bff;">
+            <h4>📊 PDF Information:</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div><strong>Total Pages:</strong> {{ pdf_info.total_pages }}</div>
+                <div><strong>Encrypted:</strong> {{ pdf_info.encrypted|yesno:"Yes,No" }}</div>
+                <div><strong>Title:</strong> {{ pdf_info.title }}</div>
+                <div><strong>Author:</strong> {{ pdf_info.author }}</div>
+                <div><strong>Subject:</strong> {{ pdf_info.subject }}</div>
+                <div><strong>Creator:</strong> {{ pdf_info.creator }}</div>
+                <div><strong>Producer:</strong> {{ pdf_info.producer }}</div>
+                <div><strong>Creation Date:</strong> {{ pdf_info.creation_date }}</div>
+                <div><strong>Modification Date:</strong> {{ pdf_info.modification_date }}</div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+            <h4>🔍 Information Provided:</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ <strong>Document structure:</strong> Page count and organization</li>
+                <li>✅ <strong>Security info:</strong> Encryption and protection status</li>
+                <li>✅ <strong>Metadata:</strong> Title, author, subject, and more</li>
+                <li>✅ <strong>Creation details:</strong> Dates and software used</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

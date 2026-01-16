@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="career-page">
+
+    <div class="career-form">
+        <h2 class="mb-4">Contact Us</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group mb-3">
+                <label>Your Name</label>
+                <input type="text" name="name" class="form-control"
+                       placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Email Address</label>
+                <input type="email" name="email" class="form-control"
+                       placeholder="Enter your email address" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Subject</label>
+                <input type="text" name="subject" class="form-control"
+                       placeholder="Enter subject" required>
+            </div>
+
+            <div class="form-group mb-4">
+                <label>Message</label>
+                <textarea name="message" rows="5" class="form-control"
+                          placeholder="Write your message..." required></textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="submit">
+                    Send Message
+                </button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<style>
+/* Page center */
+.career-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form box */
+.career-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Heading */
+.career-form h2 {
+    font-weight: 700;
+    color: #E74C3C;
+}
+
+/* Labels */
+.career-form label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+/* Inputs */
+.career-form .form-control {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 14px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    transition: all 0.25s ease;
+}
+
+/* Focus effect */
+.career-form .form-control:focus {
+    outline: none;
+    border-color: #E74C3C;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.15);
+}
+
+/* Placeholder */
+.career-form .form-control::placeholder {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+/* Textarea */
+.career-form textarea {
+    resize: none;
+}
+
+/* Button */
+.career-form button {
+    background: linear-gradient(90deg, #E74C3C, #ff6b5a);
+    border: none;
+    color: #ffffff;
+    padding: 14px 40px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.career-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(231, 76, 60, 0.35);
+}
+</style>
+
+{% endblock %}

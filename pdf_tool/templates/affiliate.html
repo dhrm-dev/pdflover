@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+{% block title %}Affiliate Program - LovePDFtools | Earn Commissions{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="affiliate-hero text-center py-5 mb-5 bg-primary text-white rounded">
+        <h1 class="display-4">LovePDFtools Affiliate Program</h1>
+        <p class="lead">Earn commissions by sharing tools people love</p>
+        <p class="h3">Earn up to <strong>30% recurring commission</strong></p>
+        <a href="#signup" class="btn btn-light btn-lg mt-3">Join Now</a>
+    </div>
+
+    <!-- Program Benefits -->
+    <div class="benefits mb-5">
+        <h2 class="text-center mb-4">Why Join Our Affiliate Program?</h2>
+        <div class="row">
+            <div class="col-md-4 text-center mb-4">
+                <i class="fas fa-money-bill-wave fa-3x text-success mb-3"></i>
+                <h4>High Commissions</h4>
+                <p>Earn 30% on all premium referrals for the lifetime of the customer</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                <h4>Large Audience</h4>
+                <p>Tap into the growing market of PDF tool users worldwide</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <i class="fas fa-chart-line fa-3x text-warning mb-3"></i>
+                <h4>Proven Converters</h4>
+                <p>Our free tools naturally lead to premium upgrades</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Commission Structure -->
+    <div class="commission-structure bg-light p-5 rounded mb-5">
+        <h2 class="text-center mb-4">Commission Structure</h2>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="commission-tier">
+                    <h3>30%</h3>
+                    <h5>Premium Plans</h5>
+                    <p>Recurring monthly commission</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="commission-tier">
+                    <h3>25%</h3>
+                    <h5>Team Plans</h5>
+                    <p>Higher value business customers</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="commission-tier">
+                    <h3>$50</h3>
+                    <h5>Bonus</h5>
+                    <p>For every 10 active referrals</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-it-works mb-5">
+        <h2 class="text-center mb-4">How It Works</h2>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h5>Sign Up</h5>
+                    <p>Join our affiliate program in minutes</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h5>Get Links</h5>
+                    <p>Access unique tracking links and banners</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h5>Promote</h5>
+                    <p>Share with your audience</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h5>Earn</h5>
+                    <p>Get paid monthly via PayPal or bank transfer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Who Should Join -->
+    <div class="who-join mb-5">
+        <h2 class="text-center mb-4">Perfect For</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check text-success mr-2"></i> Tech Bloggers</li>
+                    <li class="mb-2"><i class="fas fa-check text-success mr-2"></i> Productivity YouTubers</li>
+                    <li class="mb-2"><i class="fas fa-check text-success mr-2"></i> Software Review Sites</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check text-success mr-2"></i> Educational Platforms</li>
+                    <li class="mb-2"><i class="fas fa-check text-success mr-2"></i> Business Tool Directories</li>
+                    <li class="mb-2"><i class="fas fa-check text-success mr-2"></i> Digital Marketing Agencies</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup" class="signup-form card">
+        <div class="card-body">
+            <h2 class="text-center mb-4">Join Our Affiliate Program</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="website">Website/Blog URL</label>
+                    <input type="url" class="form-control" id="website" name="website" placeholder="https://">
+                </div>
+                
+                <div class="form-group">
+                    <label for="audience">Describe Your Audience</label>
+                    <textarea class="form-control" id="audience" name="audience" rows="3" placeholder="e.g., Students, Professionals, Small Businesses..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="promotion">How do you plan to promote? *</label>
+                    <select class="form-control" id="promotion" name="promotion" required>
+                        <option value="">Select promotion method</option>
+                        <option value="blog">Blog Content</option>
+                        <option value="youtube">YouTube Videos</option>
+                        <option value="social">Social Media</option>
+                        <option value="email">Email Newsletter</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="terms" required>
+                    <label class="form-check-label" for="terms">
+                        I agree to the <a href="{% url 'terms_of_service' %}">Terms of Service</a> and <a href="{% url 'privacy_policy' %}">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Apply to Join Program
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq mt-5">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="affiliateFAQ">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faq1">
+                            How often are commissions paid?
+                        </button>
+                    </h5>
+                </div>
+                <div id="faq1" class="collapse show" data-parent="#affiliateFAQ">
+                    <div class="card-body">
+                        Commissions are paid monthly via PayPal or bank transfer. Minimum payout is $50.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq2">
+                            What's the cookie duration?
+                        </button>
+                    </h5>
+                </div>
+                <div id="faq2" class="collapse" data-parent="#affiliateFAQ">
+                    <div class="card-body">
+                        We use a 60-day cookie period. If someone clicks your link and signs up within 60 days, you get credit.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq3">
+                            Is there any cost to join?
+                        </button>
+                    </h5>
+                </div>
+                <div id="faq3" class="collapse" data-parent="#affiliateFAQ">
+                    <div class="card-body">
+                        No, joining our affiliate program is completely free. We only ask that you promote our tools ethically.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.affiliate-hero {
+    background: linear-gradient(135deg, #E74C3C 0%, #C0392B 100%) !important;
+}
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #E74C3C;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.commission-tier h3 {
+    color: #E74C3C;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+</style>
+{% endblock %}

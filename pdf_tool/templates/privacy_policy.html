@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Privacy Policy - PDFLOVER{% endblock %}
+
+{% block content %}
+<div class="career-page">
+
+    <div class="career-form privacy-box">
+        <h2 class="mb-2">Privacy Policy</h2>
+        <p class="privacy-date">Last updated: {% now "F j, Y" %}</p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">1. Information We Collect</h4>
+        <p class="about-text">
+            At PDFLOVER, we respect your privacy. We collect only the minimum data
+            required to provide our services effectively.
+        </p>
+        <ul class="about-list">
+            <li><strong>PDF Files:</strong> Temporarily processed to perform requested actions</li>
+            <li><strong>Automated Data:</strong> IP address, browser type, device info for analytics</li>
+            <li><strong>Cookies:</strong> To enhance user experience and functionality</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">2. How We Use Your Files</h4>
+        <ul class="about-list">
+            <li>Files are processed securely on our servers</li>
+            <li>All uploaded files are automatically deleted within 1 hour</li>
+            <li>We never store, share, or sell your documents</li>
+            <li>Processing is fully automated with no human access</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">3. Data Security</h4>
+        <ul class="about-list">
+            <li>SSL encryption for all data transfers</li>
+            <li>Secure server infrastructure</li>
+            <li>Regular security monitoring</li>
+            <li>No permanent file storage</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">4. Third-Party Services</h4>
+        <p class="about-text">
+            We use trusted third-party services only for essential operations such as:
+        </p>
+        <ul class="about-list">
+            <li>Website analytics (e.g., Google Analytics)</li>
+            <li>Hosting and infrastructure services</li>
+            <li>Error monitoring and performance optimization</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">5. Your Rights</h4>
+        <ul class="about-list">
+            <li>Access information related to your data</li>
+            <li>Request deletion of personal information</li>
+            <li>Opt-out of analytics tracking</li>
+            <li>Ask questions about our privacy practices</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">6. Contact Us</h4>
+        <p class="about-text">
+            For any privacy-related questions, please contact us at:
+        </p>
+        <p class="about-text"><strong>Email:</strong> privacy@pdflover.com</p>
+    </div>
+
+</div>
+
+<style>
+/* Page center */
+.career-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main card */
+.career-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Headings */
+.career-form h2 {
+    font-weight: 700;
+    color: #E74C3C;
+}
+
+.about-heading {
+    margin-top: 18px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Text */
+.about-text {
+    font-size: 14.5px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Date */
+.privacy-date {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Divider */
+.about-divider {
+    margin: 22px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Lists */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.about-list li {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 6px;
+}
+</style>
+
+{% endblock %}

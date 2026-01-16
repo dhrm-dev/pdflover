@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}Cookie Policy - PDFLOVER{% endblock %}
+
+{% block content %}
+<div class="career-page">
+
+    <div class="career-form">
+        <h2 class="mb-2">Cookie Policy</h2>
+        <p class="privacy-date">Last updated: {% now "F j, Y" %}</p>
+
+        <div class="cookie-alert">
+            By using PDFLOVER, you consent to our use of cookies as described in this policy.
+        </div>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">What Are Cookies?</h4>
+        <p class="about-text">
+            Cookies are small text files stored on your device when you visit a website.
+            They help improve functionality, remember preferences, and enhance user experience.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">How We Use Cookies</h4>
+        <ul class="about-list">
+            <li><strong>Essential Cookies:</strong> Required for basic site functionality and security</li>
+            <li><strong>Analytics Cookies:</strong> Help us understand visitor behavior</li>
+            <li><strong>Preference Cookies:</strong> Remember your settings and choices</li>
+            <li><strong>Performance Cookies:</strong> Monitor performance and reliability</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Third-Party Cookies</h4>
+        <p class="about-text">
+            We may use trusted third-party services that set cookies, including:
+        </p>
+        <ul class="about-list">
+            <li>Google Analytics – traffic analysis</li>
+            <li>Google Ads – advertising and conversion tracking</li>
+            <li>Hotjar – user behavior insights</li>
+            <li>Cloudflare – security and performance</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Cookie Management</h4>
+        <p class="about-text">
+            You can manage or disable cookies through your browser settings:
+        </p>
+        <ul class="about-list">
+            <li><strong>Chrome:</strong> Settings → Privacy & security → Cookies</li>
+            <li><strong>Firefox:</strong> Options → Privacy & Security</li>
+            <li><strong>Safari:</strong> Preferences → Privacy</li>
+            <li><strong>Edge:</strong> Settings → Cookies and site permissions</li>
+        </ul>
+
+        <p class="about-text">
+            You can also opt-out of certain tracking services:
+        </p>
+        <ul class="about-list">
+            <li>Google Analytics Opt-out</li>
+            <li>Hotjar Opt-out</li>
+            <li>Your Online Choices</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Essential Cookies</h4>
+        <ul class="about-list">
+            <li>Session management and security</li>
+            <li>Load balancing</li>
+            <li>File processing and PDF operations</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Changes to This Policy</h4>
+        <p class="about-text">
+            We may update this Cookie Policy from time to time. Any changes will be posted
+            on this page with an updated revision date.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Contact Us</h4>
+        <p class="about-text">
+            For questions about this Cookie Policy, contact us at:
+        </p>
+        <p class="about-text"><strong>Email:</strong> privacy@pdflover.com</p>
+    </div>
+
+</div>
+
+<style>
+/* Page center */
+.career-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main card */
+.career-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Heading */
+.career-form h2 {
+    font-weight: 700;
+    color: #E74C3C;
+}
+
+/* Date */
+.privacy-date {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Alert */
+.cookie-alert {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e40af;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+/* Section headings */
+.about-heading {
+    margin-top: 18px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Text */
+.about-text {
+    font-size: 14.5px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Divider */
+.about-divider {
+    margin: 22px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Lists */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+    text-align: left;
+}
+
+.about-list li {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 6px;
+}
+</style>
+
+{% endblock %}

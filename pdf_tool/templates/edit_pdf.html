@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="feature-section">
+        <h1>Edit PDF</h1>
+        <p>Add text and modify your PDF documents.</p>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="upload-area">
+                <h3>📄 Upload PDF File</h3>
+                <p>Click or drag & drop your PDF file here</p>
+                <input type="file" name="pdf_file" accept=".pdf" required class="file-input">
+            </div>
+            
+            <div style="margin: 2rem 0;">
+                <label for="text" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                    📝 Text to Add:
+                </label>
+                <textarea id="text" name="text" placeholder="Enter text to add to PDF"
+                         style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; min-height: 100px;"></textarea>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0;">
+                <div>
+                    <label for="position_x" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        X Position:
+                    </label>
+                    <input type="number" id="position_x" name="position_x" value="100" 
+                           style="width: 100%; padding: 8px; border: 2px solid #e5e7eb; border-radius: 8px;">
+                </div>
+                <div>
+                    <label for="position_y" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                        Y Position:
+                    </label>
+                    <input type="number" id="position_y" name="position_y" value="100" 
+                           style="width: 100%; padding: 8px; border: 2px solid #e5e7eb; border-radius: 8px;">
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <button type="submit" class="btn">Edit PDF</button>
+            </div>
+        </form>
+
+        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+            <h4>✏️ Editing Features:</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ <strong>Add text:</strong> Insert custom text anywhere in PDF</li>
+                <li>✅ <strong>Position control:</strong> Precise text placement</li>
+                <li>✅ <strong>Multi-page support:</strong> Text added to all pages</li>
+                <li>✅ <strong>Quality maintained:</strong> Original content preserved</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

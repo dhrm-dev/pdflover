@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}Disclaimer - PDFLOVER{% endblock %}
+
+{% block content %}
+<div class="career-page">
+
+    <div class="career-form">
+        <h2 class="mb-2">Disclaimer</h2>
+
+        <div class="disclaimer-alert">
+            <strong>Important Notice:</strong>
+            Please read this disclaimer carefully before using our services.
+        </div>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Service Purpose</h4>
+        <p class="about-text">
+            PDFLOVER is designed for general PDF editing and conversion needs.
+            While we strive for accuracy, we cannot guarantee perfect results for
+            all file types and scenarios.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">No Professional Advice</h4>
+        <p class="about-text">
+            Our tools are automated utilities and do not replace professional
+            document or legal services. For critical documents, please consult
+            a qualified professional.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">File Backup</h4>
+        <p class="about-text">
+            Always maintain backups of your original files. We are not responsible
+            for any data loss, corruption, or unexpected results during processing.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Third-Party Content</h4>
+        <p class="about-text">
+            Users are responsible for the content they upload. PDFLOVER does not
+            verify ownership or rights related to uploaded files.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Service Availability</h4>
+        <p class="about-text">
+            Services may be temporarily unavailable due to maintenance or technical
+            issues. We do not guarantee uninterrupted availability.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Limitations</h4>
+        <p class="about-text">
+            Some advanced PDF features may not be fully supported. Results may vary
+            depending on file structure and complexity.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Acceptance</h4>
+        <p class="about-text">
+            By using PDFLOVER, you acknowledge and accept the terms and limitations
+            outlined in this disclaimer.
+        </p>
+    </div>
+
+</div>
+
+<style>
+/* Page center */
+.career-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main card */
+.career-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Heading */
+.career-form h2 {
+    font-weight: 700;
+    color: #E74C3C;
+}
+
+/* Alert box */
+.disclaimer-alert {
+    background: #fff7ed;
+    color: #92400e;
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+/* Section headings */
+.about-heading {
+    margin-top: 18px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Paragraph text */
+.about-text {
+    font-size: 14.5px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Divider */
+.about-divider {
+    margin: 22px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+</style>
+
+{% endblock %}

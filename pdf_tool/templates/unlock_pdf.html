@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="feature-section">
+        <h1>Unlock PDF File</h1>
+        <p>Remove password protection from your PDF documents.</p>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="upload-area">
+                <h3>📄 Upload Protected PDF</h3>
+                <p>Click or drag & drop your password-protected PDF file</p>
+                <input type="file" name="pdf_file" accept=".pdf" required class="file-input">
+            </div>
+            
+            <div style="margin: 2rem 0;">
+                <label for="password" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                    🔓 Enter PDF Password:
+                </label>
+                <input type="password" id="password" name="password" 
+                       placeholder="Enter the PDF password" required
+                       style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem;">
+                <small style="color: #6b7280; display: block; margin-top: 0.5rem;">
+                    You must know the current password to unlock the PDF
+                </small>
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <button type="submit" class="btn">Unlock PDF</button>
+            </div>
+        </form>
+
+        <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; border-left: 4px solid #ffc107;">
+            <h4>🔐 Important Notice:</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ <strong>Authorized access only:</strong> Requires original password</li>
+                <li>✅ <strong>Restrictions removed:</strong> Printing and editing enabled</li>
+                <li>❌ <strong>No brute force:</strong> Cannot crack unknown passwords</li>
+                <li>❌ <strong>Legal use only:</strong> Respect copyright and privacy</li>
+                <li>⚠️ <strong>Ownership required:</strong> Only unlock your own files</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="hero">
+        <h1>All PDF Tools</h1>
+        <p>Complete suite of 21 PDF utilities for all your document needs</p>
+    </div>
+
+    <div class="tools-grid">
+        <!-- Conversion Tools -->
+        <a href="{% url 'pdf_to_word' %}" class="tool-card">
+            <div class="tool-icon">📝</div>
+            <h3>PDF to Word</h3>
+            <p>Convert PDF to editable DOCX format</p>
+            <small>Preserves formatting</small>
+        </a>
+        
+        <a href="{% url 'pdf_to_excel' %}" class="tool-card">
+            <div class="tool-icon">📊</div>
+            <h3>PDF to Excel</h3>
+            <p>Extract tables to XLSX spreadsheets</p>
+            <small>Text & Image support</small>
+        </a>
+        
+        <a href="{% url 'pdf_to_ppt' %}" class="tool-card">
+            <div class="tool-icon">📑</div>
+            <h3>PDF to PowerPoint</h3>
+            <p>Convert to PPTX presentations</p>
+            <small>Page to slide conversion</small>
+        </a>
+        
+        <a href="{% url 'pdf_to_images' %}" class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>PDF to Images</h3>
+            <p>Export pages as JPG/PNG</p>
+            <small>High quality output</small>
+        </a>
+
+        <a href="{% url 'pdf_to_text' %}" class="tool-card">
+            <div class="tool-icon">📄</div>
+            <h3>PDF to Text</h3>
+            <p>Extract text content</p>
+            <small>Plain text format</small>
+        </a>
+
+        <!-- Editing Tools -->
+        <a href="{% url 'merge_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔗</div>
+            <h3>Merge PDF</h3>
+            <p>Combine multiple PDFs</p>
+            <small>Drag & drop reorder</small>
+        </a>
+        
+        <a href="{% url 'split_pdf' %}" class="tool-card">
+            <div class="tool-icon">✂️</div>
+            <h3>Split PDF</h3>
+            <p>Extract specific pages</p>
+            <small>Custom page ranges</small>
+        </a>
+
+        <a href="{% url 'edit_pdf' %}" class="tool-card">
+            <div class="tool-icon">✏️</div>
+            <h3>Edit PDF</h3>
+            <p>Add text and content</p>
+            <small>Text insertion</small>
+        </a>
+
+        <a href="{% url 'compress_pdf' %}" class="tool-card">
+            <div class="tool-icon">📦</div>
+            <h3>Compress PDF</h3>
+            <p>Reduce file size</p>
+            <small>Quality maintained</small>
+        </a>
+
+        <a href="{% url 'rotate_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔄</div>
+            <h3>Rotate PDF</h3>
+            <p>Rotate pages 90°/180°/270°</p>
+            <small>Angle selection</small>
+        </a>
+
+        <a href="{% url 'rearrange_pdf' %}" class="tool-card">
+            <div class="tool-icon">📑</div>
+            <h3>Rearrange PDF</h3>
+            <p>Change page order</p>
+            <small>Custom sequences</small>
+        </a>
+
+        <!-- Security Tools -->
+        <a href="{% url 'protect_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔒</div>
+            <h3>Protect PDF</h3>
+            <p>Add password security</p>
+            <small>128-bit encryption</small>
+        </a>
+        
+        <a href="{% url 'unlock_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔓</div>
+            <h3>Unlock PDF</h3>
+            <p>Remove password protection</p>
+            <small>Authorized access only</small>
+        </a>
+
+        <!-- Watermark Tools -->
+        <a href="{% url 'add_watermark' %}" class="tool-card">
+            <div class="tool-icon">💧</div>
+            <h3>Add Watermark</h3>
+            <p>Add text watermark</p>
+            <small>Custom text support</small>
+        </a>
+
+        <a href="{% url 'remove_watermark' %}" class="tool-card">
+            <div class="tool-icon">🚫</div>
+            <h3>Remove Watermark</h3>
+            <p>Basic watermark removal</p>
+            <small>Simple watermarks only</small>
+        </a>
+
+        <!-- Utility Tools -->
+        <a href="{% url 'image_to_pdf' %}" class="tool-card">
+            <div class="tool-icon">📸</div>
+            <h3>Image to PDF</h3>
+            <p>Convert images to PDF</p>
+            <small>JPG, PNG, BMP support</small>
+        </a>
+
+        <a href="{% url 'html_to_pdf' %}" class="tool-card">
+            <div class="tool-icon">🌐</div>
+            <h3>HTML to PDF</h3>
+            <p>Convert HTML to PDF</p>
+            <small>Web content conversion</small>
+        </a>
+
+        <a href="{% url 'edit_metadata' %}" class="tool-card">
+            <div class="tool-icon">📊</div>
+            <h3>Edit Metadata</h3>
+            <p>Update document info</p>
+            <small>Title, author, subject</small>
+        </a>
+
+        <a href="{% url 'fill_pdf_form' %}" class="tool-card">
+            <div class="tool-icon">📋</div>
+            <h3>Fill PDF Forms</h3>
+            <p>Basic form filling</p>
+            <small>Form field support</small>
+        </a>
+
+        <a href="{% url 'batch_process' %}" class="tool-card">
+            <div class="tool-icon">📦</div>
+            <h3>Batch Process</h3>
+            <p>Process multiple files</p>
+            <small>Merge operations</small>
+        </a>
+
+        <a href="{% url 'pdf_info' %}" class="tool-card">
+            <div class="tool-icon">🔍</div>
+            <h3>PDF Info</h3>
+            <p>View document details</p>
+            <small>Metadata & properties</small>
+        </a>
+
+        <a href="{% url 'ocr_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔍</div>
+            <h3>OCR PDF</h3>
+            <p>Extract text from scanned PDFs</p>
+            <small>Excel, Word, PPT output</small>
+        </a>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 10px;">
+        <h3>🎉 21 Complete PDF Tools</h3>
+        <p>Your comprehensive PDF solution with conversion, editing, security, and utility tools</p>
+    </div>
+</div>
+{% endblock %}

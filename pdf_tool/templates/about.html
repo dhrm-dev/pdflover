@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - PDFLOVER{% endblock %}
+
+{% block content %}
+<div class="career-page">
+
+    <div class="career-form">
+        <h2 class="mb-3">About PDFLOVER</h2>
+
+        <p class="about-text">
+            PDFLOVER was created with a simple goal — to make PDF tools easy, fast,
+            and accessible for everyone. We believe working with PDFs should never feel
+            complicated or frustrating.
+        </p>
+
+        <p class="about-text">
+            What started as a small project has grown into a trusted platform used by
+            thousands of users worldwide for everyday document needs.
+        </p>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Our Mission</h4>
+        <p class="about-text">
+            To simplify PDF editing and conversion for students, professionals,
+            businesses, and casual users by offering reliable tools without unnecessary
+            barriers.
+        </p>
+
+        <ul class="about-list">
+            <li>✔ 100% Free PDF Tools</li>
+            <li>✔ No Registration Required</li>
+            <li>✔ Secure & Private File Handling</li>
+            <li>✔ Continuous Improvements</li>
+        </ul>
+
+        <hr class="about-divider">
+
+        <h4 class="about-heading">Our Values</h4>
+
+        <ul class="about-list">
+            <li><strong>User First:</strong> We design tools people actually need.</li>
+            <li><strong>Privacy:</strong> Files are automatically deleted after processing.</li>
+            <li><strong>Simplicity:</strong> Clean UI, fast results, no confusion.</li>
+        </ul>
+    </div>
+
+</div>
+
+<style>
+/* Page center */
+.career-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main card (same as Career & Contact) */
+.career-form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* Headings */
+.career-form h2 {
+    font-weight: 700;
+    color: #E74C3C;
+}
+
+.about-heading {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* Paragraph text */
+.about-text {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* Divider */
+.about-divider {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Lists */
+.about-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.about-list li {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 8px;
+}
+</style>
+
+{% endblock %}

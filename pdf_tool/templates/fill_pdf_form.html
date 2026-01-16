@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="feature-section">
+        <h1>Fill PDF Forms</h1>
+        <p>Basic PDF form filling functionality.</p>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="upload-area">
+                <h3>📄 Upload PDF Form</h3>
+                <p>Click or drag & drop your PDF form here</p>
+                <input type="file" name="pdf_file" accept=".pdf" required class="file-input">
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <button type="submit" class="btn">Process Form</button>
+            </div>
+        </form>
+
+        <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; margin-top: 2rem; border-left: 4px solid #ffc107;">
+            <h4>📋 Form Features:</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ <strong>Form detection:</strong> Identifies form fields</li>
+                <li>✅ <strong>Basic forms:</strong> Works with simple PDF forms</li>
+                <li>❌ <strong>Complex forms:</strong> Limited advanced form support</li>
+                <li>⚠️ <strong>Manual editing:</strong> Some forms may require manual completion</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

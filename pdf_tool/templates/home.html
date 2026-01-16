@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="hero">
+    <h1>All-in-One PDF Toolkit</h1>
+    <p>Convert, edit, merge, split, protect and unlock PDF files with our powerful online tools. Fast, secure, and completely free!</p>
+</div>
+
+<div class="container">
+    <div class="tools-grid">
+        <a href="{% url 'pdf_to_word' %}" class="tool-card">
+            <div class="tool-icon">📝</div>
+            <h3>PDF to Word</h3>
+            <p>Convert PDF documents to editable Word files with perfect formatting</p>
+        </a>
+        
+        <a href="{% url 'pdf_to_excel' %}" class="tool-card">
+            <div class="tool-icon">📊</div>
+            <h3>PDF to Excel</h3>
+            <p>Extract tables and data from PDF to Excel spreadsheets</p>
+        </a>
+        
+        <a href="{% url 'pdf_to_ppt' %}" class="tool-card">
+            <div class="tool-icon">📑</div>
+            <h3>PDF to PowerPoint</h3>
+            <p>Convert PDF pages to PowerPoint presentation slides</p>
+        </a>
+        
+        <a href="{% url 'pdf_to_images' %}" class="tool-card">
+            <div class="tool-icon">🖼️</div>
+            <h3>PDF to Images</h3>
+            <p>Convert PDF pages to high-quality JPG/PNG images</p>
+        </a>
+        
+        <a href="{% url 'merge_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔗</div>
+            <h3>Merge PDF</h3>
+            <p>Combine multiple PDF files into one document</p>
+        </a>
+        
+        <a href="{% url 'split_pdf' %}" class="tool-card">
+            <div class="tool-icon">✂️</div>
+            <h3>Split PDF</h3>
+            <p>Extract specific pages or split PDF into multiple files</p>
+        </a>
+        
+        <a href="{% url 'protect_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔒</div>
+            <h3>Protect PDF</h3>
+            <p>Add password protection to your PDF documents</p>
+        </a>
+        
+        <a href="{% url 'unlock_pdf' %}" class="tool-card">
+            <div class="tool-icon">🔓</div>
+            <h3>Unlock PDF</h3>
+            <p>Remove password protection from PDF files</p>
+        </a>
+        
+        <a href="{% url 'image_to_pdf' %}" class="tool-card">
+            <div class="tool-icon">📸</div>
+            <h3>Image to PDF</h3>
+            <p>Convert JPG, PNG images to PDF documents</p>
+        </a>
+    </div>
+</div>
+<div class="hero">
+    <a href="{% url 'all_tools' %}" class="btn">Explore All Tools</a>
+</div>
+
+{% endblock %}

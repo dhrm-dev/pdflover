@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block title %}GDPR Compliance - LovePDFtools | Data Protection{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <h1>GDPR Compliance</h1>
+            <p class="text-muted">Last updated: {% now "F j, Y" %}</p>
+
+            <div class="alert alert-success">
+                <h4><i class="fas fa-shield-alt"></i> GDPR Compliant</h4>
+                <p>LovePDFtools is fully compliant with the General Data Protection Regulation (GDPR). We're committed to protecting your privacy and data rights.</p>
+            </div>
+
+            <div class="legal-content">
+                <section class="mb-5">
+                    <h2>What is GDPR?</h2>
+                    <p>The General Data Protection Regulation (GDPR) is a comprehensive data protection law that came into effect on May 25, 2018, in the European Union. It strengthens data protection for all individuals within the EU and regulates the export of personal data outside the EU.</p>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Our GDPR Commitment</h2>
+                    <p>At LovePDFtools, we're committed to:</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="gdpr-principle card mb-3">
+                                <div class="card-body">
+                                    <h5><i class="fas fa-user-shield text-primary"></i> Data Protection</h5>
+                                    <p>Implementing appropriate technical and organizational measures to protect personal data</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="gdpr-principle card mb-3">
+                                <div class="card-body">
+                                    <h5><i class="fas fa-transparency text-success"></i> Transparency</h5>
+                                    <p>Being clear about how we collect, use, and store personal data</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="gdpr-principle card mb-3">
+                                <div class="card-body">
+                                    <h5><i class="fas fa-user-check text-info"></i> User Rights</h5>
+                                    <p>Respecting and facilitating all GDPR user rights</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="gdpr-principle card mb-3">
+                                <div class="card-body">
+                                    <h5><i class="fas fa-file-contract text-warning"></i> Legal Compliance</h5>
+                                    <p>Ensuring all data processing activities have a legal basis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Your GDPR Rights</h2>
+                    <p>Under GDPR, you have the following rights regarding your personal data:</p>
+                    
+                    <div class="rights-list">
+                        <div class="right-item mb-4">
+                            <h5>1. Right to Access</h5>
+                            <p>You have the right to request copies of your personal data that we process.</p>
+                        </div>
+                        
+                        <div class="right-item mb-4">
+                            <h5>2. Right to Rectification</h5>
+                            <p>You have the right to request correction of inaccurate or incomplete personal data.</p>
+                        </div>
+                        
+                        <div class="right-item mb-4">
+                            <h5>3. Right to Erasure (Right to be Forgotten)</h5>
+                            <p>You have the right to request deletion of your personal data under certain circumstances.</p>
+                        </div>
+                        
+                        <div class="right-item mb-4">
+                            <h5>4. Right to Restrict Processing</h5>
+                            <p>You have the right to request restriction of processing your personal data.</p>
+                        </div>
+                        
+                        <div class="right-item mb-4">
+                            <h5>5. Right to Data Portability</h5>
+                            <p>You have the right to receive your personal data in a structured, commonly used format.</p>
+                        </div>
+                        
+                        <div class="right-item mb-4">
+                            <h5>6. Right to Object</h5>
+                            <p>You have the right to object to the processing of your personal data.</p>
+                        </div>
+                        
+                        <div class="right-item mb-4">
+                            <h5>7. Rights Related to Automated Decision Making</h5>
+                            <p>You have the right not to be subject to decisions based solely on automated processing.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h2>How We Process Your Data</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Data Type</th>
+                                    <th>Purpose</th>
+                                    <th>Legal Basis</th>
+                                    <th>Retention Period</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Uploaded PDF Files</td>
+                                    <td>File processing and conversion</td>
+                                    <td>Performance of contract</td>
+                                    <td>1 hour (automatic deletion)</td>
+                                </tr>
+                                <tr>
+                                    <td>Email Address</td>
+                                    <td>Customer support and communication</td>
+                                    <td>Legitimate interest</td>
+                                    <td>Until request deletion</td>
+                                </tr>
+                                <tr>
+                                    <td>Technical Data (IP, Browser)</td>
+                                    <td>Website analytics and security</td>
+                                    <td>Legitimate interest</td>
+                                    <td>26 months</td>
+                                </tr>
+                                <tr>
+                                    <td>Cookie Data</td>
+                                    <td>User preferences and site functionality</td>
+                                    <td>Consent</td>
+                                    <td>As per cookie policy</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Data Protection Measures</h2>
+                    <p>We implement robust security measures to protect your data:</p>
+                    <ul>
+                        <li><strong>Encryption:</strong> All data transfers use SSL/TLS encryption</li>
+                        <li><strong>Access Controls:</strong> Strict access controls and authentication</li>
+                        <li><strong>Data Minimization:</strong> We only collect necessary data</li>
+                        <li><strong>Regular Audits:</strong> Security assessments and penetration testing</li>
+                        <li><strong>Staff Training:</strong> GDPR and data protection training for all team members</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Data Transfers</h2>
+                    <p>LovePDFtools may transfer and process your data in countries outside the European Economic Area (EEA). When we do, we ensure appropriate safeguards are in place, such as:</p>
+                    <ul>
+                        <li>Adequacy decisions by the European Commission</li>
+                        <li>Standard Contractual Clauses (SCCs)</li>
+                        <li>Binding Corporate Rules (BCRs)</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Exercising Your Rights</h2>
+                    <p>To exercise any of your GDPR rights, please contact us:</p>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Data Protection Officer</h5>
+                            <p>Email: <a href="mailto:dpo@lovepdftools.com">dpo@lovepdftools.com</a></p>
+                            <p>We will respond to all legitimate requests within one month.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <h6>Required Information for Requests:</h6>
+                        <ul>
+                            <li>Your full name and contact information</li>
+                            <li>Specific right you wish to exercise</li>
+                            <li>Details of your request</li>
+                            <li>Proof of identity (for security purposes)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Data Breach Procedures</h2>
+                    <p>In the unlikely event of a data breach, we have procedures in place to:</p>
+                    <ul>
+                        <li>Contain and assess the breach</li>
+                        <li>Notify affected individuals within 72 hours</li>
+                        <li>Report to relevant supervisory authorities</li>
+                        <li>Implement measures to prevent future breaches</li>
+                    </ul>
+                </section>
+
+                <section class="mb-5">
+                    <h2>Contact Information</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Data Protection Officer</h5>
+                                    <p>Email: <a href="mailto:dpo@lovepdftools.com">dpo@lovepdftools.com</a></p>
+                                    <p>For all GDPR-related inquiries and rights requests</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Supervisory Authority</h5>
+                                    <p>You have the right to lodge a complaint with your local data protection authority if you believe we have not complied with GDPR.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.gdpr-principle {
+    transition: transform 0.2s;
+    height: 100%;
+}
+.gdpr-principle:hover {
+    transform: translateY(-5px);
+}
+.right-item {
+    border-left: 4px solid #E74C3C;
+    padding-left: 15px;
+}
+</style>
+{% endblock %}

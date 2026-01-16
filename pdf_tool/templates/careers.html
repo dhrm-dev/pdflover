@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}Careers - Join Our Team{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+    <div class="career-form">
+        <br>
+        <br>
+        <h2 class="text-center mb-4">Apply for a Job</h2>
+        <br>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group mb-3">
+                <label>Full Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Enter your full name" required>
+            </div>
+            <br>
+            <div class="form-group mb-3">
+                <label>Email Address</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter your email address" required>
+            </div>
+            <br>
+            <div class="form-group mb-3">
+                <label>Upload Resume</label>
+                <input type="file" name="resume" class="form-control" accept=".pdf,.doc,.docx" required>
+                <small class="text-muted">ONLY PDF</small>
+            </div>
+            <br>
+            <div class="form-group mb-4">
+                <label>Message</label>
+                <textarea name="message" rows="5" class="form-control" placeholder="Write a short message..." required></textarea>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-danger px-5 py-2" >
+                    Send Application
+                </button>
+                <br>
+                <br>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<style>/* Modern input fields */
+.career-form .form-group {
+    text-align: left;
+}
+
+.career-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+/* Input & textarea */
+.career-form .form-control {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 14px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    transition: all 0.25s ease;
+}
+
+/* Focus effect */
+.career-form .form-control:focus {
+    outline: none;
+    border-color: #E74C3C;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.15);
+}
+
+/* Placeholder modern */
+.career-form .form-control::placeholder {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+/* File input */
+.career-form input[type="file"] {
+    padding: 10px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+/* Textarea */
+.career-form textarea {
+    resize: none;
+}
+
+/* Button modern */
+.career-form button {
+    background: linear-gradient(90deg, #E74C3C, #ff6b5a);
+    border: none;
+    color: #fff;
+    padding: 14px 40px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.career-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(231, 76, 60, 0.35);
+}
+
+</style>
+
+{% endblock %}

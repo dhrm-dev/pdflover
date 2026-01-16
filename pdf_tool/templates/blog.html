@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog - LovePDFtools | PDF Tips & Tutorials{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Blog Hero -->
+            <div class="blog-hero text-center py-5 mb-4">
+                <h1>LovePDFtools Blog</h1>
+                <p class="lead">PDF tips, tutorials, and industry insights</p>
+                <div class="search-box mt-4">
+                    <form class="form-inline justify-content-center">
+                        <input type="text" class="form-control mr-2" placeholder="Search articles..." style="width: 300px;">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Featured Post -->
+            <div class="featured-post card mb-5">
+                <div class="card-body">
+                    <span class="badge badge-primary mb-2">Featured</span>
+                    <h2>How to Merge PDF Files: Complete Guide 2024</h2>
+                    <p class="text-muted">By John Doe | January 15, 2024 | 5 min read</p>
+                    <p class="card-text">Learn the best practices for merging PDF files, common pitfalls to avoid, and how to use our free PDF merger tool effectively...</p>
+                    <a href="#" class="btn btn-outline-primary">Read More</a>
+                </div>
+            </div>
+
+            <!-- Blog Posts Grid -->
+            <div class="row">
+                <!-- Post 1 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">PDF vs Word: Which Should You Use?</h5>
+                            <p class="text-muted small">By Jane Smith | Jan 12, 2024 | 3 min read</p>
+                            <p class="card-text">Understanding when to use PDF and when to stick with Word documents for different scenarios.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 2 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Compress PDF Files Without Losing Quality</h5>
+                            <p class="text-muted small">By Mike Johnson | Jan 10, 2024 | 4 min read</p>
+                            <p class="card-text">Expert tips on reducing PDF file sizes while maintaining document quality and readability.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">How to Convert PDF to Editable Word Document</h5>
+                            <p class="text-muted small">By Sarah Wilson | Jan 8, 2024 | 6 min read</p>
+                            <p class="card-text">Step-by-step guide to converting PDF files to editable Word documents while preserving formatting.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 4 -->
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Top 5 PDF Security Best Practices</h5>
+                            <p class="text-muted small">By David Brown | Jan 5, 2024 | 5 min read</p>
+                            <p class="card-text">Essential security practices to protect your PDF documents from unauthorized access and editing.</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Blog pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Categories -->
+            <div class="sidebar-widget card mb-4">
+                <div class="card-body">
+                    <h5>Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">PDF Tips & Tricks (12)</a></li>
+                        <li><a href="#">Tutorials (8)</a></li>
+                        <li><a href="#">Industry News (5)</a></li>
+                        <li><a href="#">Product Updates (3)</a></li>
+                        <li><a href="#">Case Studies (2)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Popular Posts -->
+            <div class="sidebar-widget card mb-4">
+                <div class="card-body">
+                    <h5>Popular Posts</h5>
+                    <div class="popular-post mb-3">
+                        <h6><a href="#">How to Split PDF Files Online</a></h6>
+                        <small class="text-muted">1,245 views</small>
+                    </div>
+                    <div class="popular-post mb-3">
+                        <h6><a href="#">Free PDF Tools Comparison</a></h6>
+                        <small class="text-muted">987 views</small>
+                    </div>
+                    <div class="popular-post mb-3">
+                        <h6><a href="#">PDF Accessibility Guide</a></h6>
+                        <small class="text-muted">756 views</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="sidebar-widget card">
+                <div class="card-body">
+                    <h5>Stay Updated</h5>
+                    <p>Get the latest PDF tips and tool updates</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your email address">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

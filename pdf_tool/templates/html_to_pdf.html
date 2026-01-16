@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="feature-section">
+        <h1>HTML to PDF</h1>
+        <p>Convert HTML content to PDF documents.</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <div style="margin: 2rem 0;">
+                <label for="html_content" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                    📄 HTML Content:
+                </label>
+                <textarea id="html_content" name="html_content" placeholder="Enter HTML content here..."
+                         style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; min-height: 200px; font-family: monospace;"></textarea>
+                <small style="color: #6b7280;">Example: &lt;h1&gt;Hello World&lt;/h1&gt;&lt;p&gt;This is a paragraph.&lt;/p&gt;</small>
+            </div>
+            
+            <div style="margin: 2rem 0;">
+                <label for="css_content" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">
+                    🎨 CSS Styling (Optional):
+                </label>
+                <textarea id="css_content" name="css_content" placeholder="Enter CSS styles here..."
+                         style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 1rem; min-height: 100px; font-family: monospace;"></textarea>
+            </div>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+                <button type="submit" class="btn">Convert to PDF</button>
+            </div>
+        </form>
+
+        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+            <h4>🌐 HTML to PDF Features:</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li>✅ <strong>HTML support:</strong> Full HTML tags and structure</li>
+                <li>✅ <strong>CSS styling:</strong> Custom styles and formatting</li>
+                <li>✅ <strong>Web pages:</strong> Convert web content to PDF</li>
+                <li>✅ <strong>Professional output:</strong> Clean PDF formatting</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %} 
