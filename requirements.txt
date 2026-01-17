@@ -43,3 +43,4 @@ pdfplumber
 python-docx
 pdf2image
 pillow
+whitenoise
