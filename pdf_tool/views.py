@@ -16,13 +16,13 @@ from pdf2docx import Converter
 import img2pdf
 from pptx import Presentation
 from pptx.util import Inches
-import pythoncom
 from docx import Document
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from django.views.decorators.csrf import csrf_exempt
 import json
 import pytesseract
+import os, uuid
 
 # Tesseract path set karo (Windows ke liye)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -163,41 +163,57 @@ def embed_images_in_excel(pdf_path):
     return excel_data
 
 # PDF to Word
+import os
+import uuid
+import tempfile
+import pdfplumber
+from docx import Document
+from django.http import HttpResponse
+from django.shortcuts import render
+
 def pdf_to_word(request):
     if request.method == 'POST' and request.FILES.get('pdf_file'):
         pdf_file = request.FILES['pdf_file']
-        
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as temp_pdf:
+
+        file_id = str(uuid.uuid4())
+        pdf_path = f"/tmp/{file_id}.pdf"
+        docx_path = f"/tmp/{file_id}.docx"
+
+        # Save PDF
+        with open(pdf_path, 'wb') as f:
             for chunk in pdf_file.chunks():
-                temp_pdf.write(chunk)
-            temp_pdf_path = temp_pdf.name
-        
+                f.write(chunk)
+
         try:
-            # Convert PDF to Word
-            temp_docx_path = 'temp_converted.docx'
-            cv = Converter(temp_pdf_path)
-            cv.convert(temp_docx_path, start=0, end=None)
-            cv.close()
-            
-            with open(temp_docx_path, 'rb') as f:
-                word_data = f.read()
-            
-            response = HttpResponse(
-                word_data,
-                content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-            )
-            response['Content-Disposition'] = 'attachment; filename="converted_document.docx"'
-            return response
-            
+            doc = Document()
+
+            with pdfplumber.open(pdf_path) as pdf:
+                for page in pdf.pages:
+                    text = page.extract_text()
+                    if text:
+                        doc.add_paragraph(text)
+
+            doc.save(docx_path)
+
+            with open(docx_path, 'rb') as f:
+                response = HttpResponse(
+                    f.read(),
+                    content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                )
+                response['Content-Disposition'] = 'attachment; filename="converted_document.docx"'
+                return response
+
         except Exception as e:
             return HttpResponse(f"Error: {str(e)}", status=500)
+
         finally:
-            if os.path.exists(temp_pdf_path):
-                os.unlink(temp_pdf_path)
-            if os.path.exists('temp_converted.docx'):
-                os.unlink('temp_converted.docx')
-    
+            if os.path.exists(pdf_path):
+                os.remove(pdf_path)
+            if os.path.exists(docx_path):
+                os.remove(docx_path)
+
     return render(request, 'pdf_to_word.html')
+
 
 # PDF to PowerPoint
 def pdf_to_ppt(request):
