@@ -23,144 +23,155 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 import pytesseract
 import os, uuid
+import os, io, tempfile
+import camelot
+from openpyxl.utils.dataframe import dataframe_to_rows
+
 
 # Tesseract path set karo (Windows ke liye)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-# PDF to Excel
+
+
+# ==============================
+# PDF TO EXCEL (MAIN VIEW)
+# ==============================
 def pdf_to_excel(request):
     if request.method == 'POST' and request.FILES.get('pdf_file'):
         pdf_file = request.FILES['pdf_file']
-        
+
         with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as temp_pdf:
             for chunk in pdf_file.chunks():
                 temp_pdf.write(chunk)
             temp_pdf_path = temp_pdf.name
-        
+
         try:
             is_computer_generated = check_if_computer_generated(temp_pdf_path)
-            
+
             if is_computer_generated:
                 excel_data = extract_text_from_pdf(temp_pdf_path)
             else:
                 excel_data = embed_images_in_excel(temp_pdf_path)
-            
+
             response = HttpResponse(
                 excel_data,
                 content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             )
             response['Content-Disposition'] = 'attachment; filename="converted_excel.xlsx"'
             return response
-            
+
         except Exception as e:
             return HttpResponse(f"Error: {str(e)}", status=500)
+
         finally:
             if os.path.exists(temp_pdf_path):
                 os.unlink(temp_pdf_path)
-    
+
     return render(request, 'pdf_to_excel.html')
 
+
+# ==============================
+# CHECK TEXT / SCANNED PDF
+# ==============================
 def check_if_computer_generated(pdf_path):
     try:
         with pdfplumber.open(pdf_path) as pdf:
             total_pages = len(pdf.pages)
             text_pages = 0
-            
+
             for page in pdf.pages:
                 text = page.extract_text()
                 if text and len(text.strip()) > 50:
                     text_pages += 1
-            
-            return (text_pages / total_pages) > 0.5 if total_pages > 0 else False
+
+            return (text_pages / total_pages) > 0.5 if total_pages else False
     except Exception:
         return False
 
+
+# ==============================
+# TEXT PDF ➜ HIGH QUALITY EXCEL
+# (REPLACED WITH CAMELOT)
+# ==============================
 def extract_text_from_pdf(pdf_path):
-    workbook = Workbook()
-    workbook.remove(workbook.active)
-    
-    with pdfplumber.open(pdf_path) as pdf:
-        for page_num, page in enumerate(pdf.pages):
-            text = page.extract_text()
-            
-            if text:
-                sheet_name = f"Page_{page_num + 1}"[:31]
-                worksheet = workbook.create_sheet(title=sheet_name)
-                lines = text.split('\n')
-                for row_num, line in enumerate(lines, 1):
-                    if line.strip():
-                        worksheet.cell(row=row_num, column=1, value=line.strip())
-            
-            tables = page.extract_tables()
-            for table_num, table in enumerate(tables):
-                if table and any(any(cell for cell in row) for row in table):
-                    sheet_name = f"Page_{page_num + 1}_Table_{table_num + 1}"[:31]
-                    worksheet = workbook.create_sheet(title=sheet_name)
-                    
-                    for row_num, row in enumerate(table, 1):
-                        for col_num, cell in enumerate(row, 1):
-                            if cell:
-                                worksheet.cell(row=row_num, column=col_num, value=cell)
-    
-    if len(workbook.sheetnames) == 0:
-        worksheet = workbook.create_sheet(title="No_Data")
-        worksheet.cell(row=1, column=1, value="No extractable text found in PDF")
-    
-    temp_excel_path = 'temp_converted.xlsx'
-    workbook.save(temp_excel_path)
-    
-    with open(temp_excel_path, 'rb') as f:
+    wb = Workbook()
+    wb.remove(wb.active)
+
+    # 1️⃣ Best quality (border tables)
+    tables = camelot.read_pdf(
+        pdf_path,
+        pages="all",
+        flavor="lattice"
+    )
+
+    # 2️⃣ Fallback (borderless tables)
+    if tables.n == 0:
+        tables = camelot.read_pdf(
+            pdf_path,
+            pages="all",
+            flavor="stream"
+        )
+
+    if tables.n == 0:
+        raise Exception("No tables detected in PDF")
+
+    for i, table in enumerate(tables):
+        df = table.df
+        sheet_name = f"Table_{i + 1}"[:31]
+        ws = wb.create_sheet(title=sheet_name)
+
+        for row in dataframe_to_rows(df, index=False, header=True):
+            ws.append(row)
+
+        # Auto column width (polish)
+        for col in ws.columns:
+            max_len = max(
+                len(str(cell.value)) if cell.value else 0
+                for cell in col
+            )
+            ws.column_dimensions[col[0].column_letter].width = min(max_len + 2, 40)
+
+    temp_excel_path = "temp_text_pdf.xlsx"
+    wb.save(temp_excel_path)
+
+    with open(temp_excel_path, "rb") as f:
         excel_data = f.read()
-    
-    if os.path.exists(temp_excel_path):
-        os.unlink(temp_excel_path)
-    
+
+    os.unlink(temp_excel_path)
     return excel_data
 
+
+# ==============================
+# SCANNED PDF ➜ IMAGE EXCEL
+# (NO OCR)
+# ==============================
 def embed_images_in_excel(pdf_path):
-    workbook = Workbook()
-    workbook.remove(workbook.active)
-    
-    try:
-        images = convert_from_path(pdf_path, dpi=150)
-        
-        for page_num, image in enumerate(images):
-            sheet_name = f"Page_{page_num + 1}"[:31]
-            worksheet = workbook.create_sheet(title=sheet_name)
-            
-            img_byte_arr = io.BytesIO()
-            image.save(img_byte_arr, format='PNG')
-            img_byte_arr.seek(0)
-            
-            pil_image = Image.open(img_byte_arr)
-            max_width = 800
-            if pil_image.width > max_width:
-                ratio = max_width / pil_image.width
-                new_height = int(pil_image.height * ratio)
-                pil_image = pil_image.resize((max_width, new_height), Image.Resampling.LANCZOS)
-                
-                img_byte_arr = io.BytesIO()
-                pil_image.save(img_byte_arr, format='PNG')
-                img_byte_arr.seek(0)
-            
-            xl_image = XLImage(img_byte_arr)
-            worksheet.add_image(xl_image, 'A1')
-            worksheet.cell(row=1, column=10, value=f"Page {page_num + 1} - Scanned PDF Image")
-        
-    except Exception as e:
-        worksheet = workbook.create_sheet(title="Error")
-        worksheet.cell(row=1, column=1, value=f"Error processing scanned PDF: {str(e)}")
-    
-    temp_excel_path = 'temp_images.xlsx'
-    workbook.save(temp_excel_path)
-    
-    with open(temp_excel_path, 'rb') as f:
+    wb = Workbook()
+    wb.remove(wb.active)
+
+    images = convert_from_path(pdf_path, dpi=200)
+
+    for page_num, image in enumerate(images):
+        ws = wb.create_sheet(title=f"Page_{page_num + 1}"[:31])
+
+        img_bytes = io.BytesIO()
+        image.save(img_bytes, format="PNG")
+        img_bytes.seek(0)
+
+        xl_img = XLImage(img_bytes)
+        ws.add_image(xl_img, "A1")
+
+        ws.cell(row=1, column=10, value=f"Scanned PDF – Page {page_num + 1}")
+
+    temp_excel_path = "temp_scanned_pdf.xlsx"
+    wb.save(temp_excel_path)
+
+    with open(temp_excel_path, "rb") as f:
         excel_data = f.read()
-    
-    if os.path.exists(temp_excel_path):
-        os.unlink(temp_excel_path)
-    
+
+    os.unlink(temp_excel_path)
     return excel_data
+
 
 # PDF to Word
 import os
