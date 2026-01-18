@@ -44,3 +44,9 @@ python-docx
 pdf2image
 pillow
 whitenoise
+Django>=4.2
+pdfplumber
+camelot-py[cv]
+tabula-py
+pandas
+openpyxl
